@@ -53,3 +53,13 @@ cd Ghost-Bridge
 chmod +x ghost.sh
 
 ./ghost.sh
+<img width="1080" height="2400" alt="1000205201" src="https://github.com/user-attachments/assets/a7a27346-91e3-420a-8815-eb6ae94933b1" />
+
+
+<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/f364ffc1-776e-4342-aaca-17d6cd64e61e" />
+
+
+<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/a4df764b-8022-443b-b026-4df8d97f93c2" />
+
+
+
