@@ -56,10 +56,12 @@ chmod +x ghost.sh
 <img width="1080" height="2400" alt="1000205201" src="https://github.com/user-attachments/assets/a7a27346-91e3-420a-8815-eb6ae94933b1" />
 
 
-<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/f364ffc1-776e-4342-aaca-17d6cd64e61e" />
 
-
-<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/a4df764b-8022-443b-b026-4df8d97f93c2" />
+<img width="1080" height="2400" alt="1000205204" src="https://github.com/user-attachments/assets/d4ecf62f-ecea-40a4-b9f3-a3611431cebd" />
 
 
 
+<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/24c0566e-0135-4e82-8765-06d20f140beb" />
+
+
+<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/d40dbf01-3f0e-48bb-938f-12db063674da" />
