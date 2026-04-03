@@ -2,11 +2,10 @@ import socket
 import threading
 import sys
 
-# --- Ghost-Bridge v2.6 (Fast & Direct Edition) ---
+# --- Ghost-Bridge v2.7 (High-Speed Engine) ---
 
 def handle_client(client_socket):
     try:
-        # استقبال بيانات الطلب الأول من سايفون
         data = client_socket.recv(8192)
         if not data: return
         
@@ -15,17 +14,14 @@ def handle_client(client_socket):
         
         if len(lines) > 0:
             parts = lines[0].split()
-            # التحقق من أن الطلب هو HTTP CONNECT (الذي يستخدمه سايفون)
             if len(parts) >= 2 and parts[0] == 'CONNECT':
                 host_port = parts[1].split(':')
                 host = host_port[0]
                 port = int(host_port[1]) if len(host_port) > 1 else 443
                 
-                # إنشاء اتصال مباشر مع الوجهة عبر النفق
                 remote_socket = socket.create_connection((host, port), timeout=10)
                 client_socket.send(b"HTTP/1.1 200 Connection Established\r\n\r\n")
                 
-                # وظيفة نقل البيانات المتبادل (Bridge)
                 def forward(src, dst):
                     try:
                         while True:
@@ -34,7 +30,6 @@ def handle_client(client_socket):
                             dst.sendall(chunk)
                     except: pass
 
-                # تشغيل مسارين لنقل البيانات (ارسال واستقبال)
                 threading.Thread(target=forward, args=(client_socket, remote_socket), daemon=True).start()
                 threading.Thread(target=forward, args=(remote_socket, client_socket), daemon=True).start()
     except: pass
@@ -45,15 +40,13 @@ def start_proxy(port):
     try:
         server.bind(('0.0.0.0', port))
         server.listen(100)
-        print(f"[*] Ghost-Bridge Engine: READY")
-        print(f"[*] Local Bridge listening on port: {port}")
+        print(f"[*] Ghost-Bridge Engine: ACTIVE")
         while True:
             client_conn, _ = server.accept()
             threading.Thread(target=handle_client, args=(client_conn,), daemon=True).start()
     except Exception as e:
-        print(f"[-] System Error: {e}")
+        print(f"[-] Error: {e}")
 
 if __name__ == "__main__":
-    # استقبال المنفذ العشوائي من سكربت bash
     target_port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
     start_proxy(target_port)
