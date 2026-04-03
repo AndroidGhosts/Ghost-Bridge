@@ -1,53 +1,51 @@
 #!/bin/bash
 
-# --- Ghost-Bridge v2.7 (Smart & Fast Dashboard) ---
+# --- Ghost-Bridge v2.8 (Instant Dashboard) ---
 G='\033[1;32m'; R='\033[1;31m'; C='\033[1;36m'; Y='\033[1;33m'; W='\033[1;37m'; NC='\033[0m'
 
-# [1] وظيفة الفحص الذكي (إصلاح: لا تحديث إذا كانت الأدوات موجودة)
+# [1] وظيفة الفحص الصامت (لا تظهر شيئاً إذا كان كل شيء جاهزاً)
 check_deps() {
     DEPENDENCIES=(python git cloudflared psmisc)
-    MISSING_TOOLS=()
+    MISSING=()
 
-    # فحص صامت وسريع للأدوات
     for tool in "${DEPENDENCIES[@]}"; do
         if ! command -v $tool &> /dev/null; then
-            MISSING_TOOLS+=($tool)
+            MISSING+=($tool)
         fi
     done
 
-    # التثبيت فقط عند الحاجة
-    if [ ${#MISSING_TOOLS[@]} -ne 0 ]; then
-        echo -e "${Y}[*] Installing missing tools: ${MISSING_TOOLS[*]}...${NC}"
-        pkg update -y
-        for tool in "${MISSING_TOOLS[@]}"; do
-            pkg install $tool -y
-        done
-    else
-        echo -e "${G}[V] System is ready. Skipping installation...${NC}"
+    # التثبيت المباشر فقط في حالة النقص
+    if [ ${#MISSING[@]} -ne 0 ]; then
+        echo -e "${Y}[*] Adding missing components: ${MISSING[*]}${NC}"
+        pkg install "${MISSING[@]}" -y || (pkg update -y && pkg install "${MISSING[@]}" -y)
     fi
 }
 
-# [2] وظيفة تشغيل الجسر
+# [2] وظيفة تشغيل الجسر والنفق
 launch_bridge() {
     clear
     RANDOM_PORT=$(shuf -i 2000-9999 -n 1)
     echo -e "${C}┌──────────────────────────────────────────┐${NC}"
-    echo -e "${C}│${G}      👻 GHOST-BRIDGE LIVE SESSION 👻     ${C}│${NC}"
+    echo -e "${C}│${G}      👻 GHOST-BRIDGE INSTANT SESSION 👻  ${C}│${NC}"
     echo -e "${C}├──────────────────────────────────────────┤${NC}"
     echo -e "${C}│${Y}  PORT:     ${W}$RANDOM_PORT                  ${C}│${NC}"
-    echo -e "${C}│${Y}  TUNNEL:   ${G}Cloudflare (Active)           ${C}│${NC}"
+    echo -e "${C}│${Y}  STATUS:   ${G}Live & Direct                 ${C}│${NC}"
     echo -e "${C}└──────────────────────────────────────────┘${NC}"
     
+    # تنظيف العمليات القديمة بسرعة
     pkill -f cloudflared; pkill -f proxy.py
+    
+    # تشغيل النفق (صامت)
     cloudflared tunnel --url tcp://localhost:$RANDOM_PORT > /dev/null 2>&1 &
     TUNNEL_PID=$!
     
-    sleep 3
-    echo -e "${G}[+] Ghost-Bridge is ACTIVE!${NC}"
-    echo -e "${C}[!] Set Psiphon Proxy Port to: ${W}$RANDOM_PORT${NC}"
+    sleep 2
+    echo -e "${G}[+] Ready! Set Psiphon Port to: ${W}$RANDOM_PORT${NC}"
     echo -e "${R}[!] Press Ctrl+C to Stop${NC}\n"
     
+    # تشغيل البروكسي
     python proxy.py $RANDOM_PORT
+    
     kill $TUNNEL_PID
     pkill -f proxy.py
 }
@@ -58,7 +56,7 @@ while true; do
     echo -e "${C}==========================================${NC}"
     echo -e "${G}      👻 GHOST-BRIDGE CONTROL PANEL 👻    ${NC}"
     echo -e "${C}==========================================${NC}"
-    echo -e "${Y}1)${NC} Start Ghost-Bridge (Fast Mode)"
+    echo -e "${Y}1)${NC} Start Ghost-Bridge (Instant)"
     echo -e "${Y}2)${NC} Update Tool from GitHub"
     echo -e "${Y}3)${NC} Clean Cache"
     echo -e "${Y}4)${NC} Exit"
