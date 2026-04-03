@@ -48,6 +48,11 @@ python proxy.py
 pkg update -y && pkg install git -y && git clone https://github.com/AndroidGhosts/Ghost-Bridge.git && cd Ghost-Bridge && chmod +x ghost.sh && ./ghost.sh
 
 
+العودة للتشغيل بدون تثبيت فقط قم بالدخول إلى termux واضف:
+
+
+cd ~/Ghost-Bridge && ./ghost.sh
+
 
 
 
