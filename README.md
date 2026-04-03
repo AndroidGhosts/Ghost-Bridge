@@ -40,3 +40,16 @@ python proxy.py
 ​👤 المطور
 ​تم التطوير بواسطة: AndroidGhosts Team 💀
 "نحن لا نكسر القوانين، نحن فقط نعيد تعريف الوصول."
+
+
+
+الاوامر بشكل كامل 
+git clone https://github.com/AndroidGhosts/Ghost-Bridge.git
+
+
+
+cd Ghost-Bridge
+
+chmod +x ghost.sh
+
+./ghost.sh
