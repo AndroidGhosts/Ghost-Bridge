@@ -2,7 +2,7 @@ import socket
 import threading
 import sys
 
-# --- Ghost-Bridge v2.7 (High-Speed Engine) ---
+# --- Ghost-Bridge v2.8 (Ultra-Fast Edition) ---
 
 def handle_client(client_socket):
     try:
