@@ -64,4 +64,5 @@ chmod +x ghost.sh
 <img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/24c0566e-0135-4e82-8765-06d20f140beb" />
 
 
-<img width="1080" height="2400" alt="1000205203" src="https://github.com/user-attachments/assets/d40dbf01-3f0e-48bb-938f-12db063674da" />
+<img width="1080" height="2400" alt="1000205202" src="https://github.com/user-attachments/assets/823a0a29-dc46-4af1-bc90-13c4ead320d6" />
+
