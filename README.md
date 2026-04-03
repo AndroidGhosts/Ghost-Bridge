@@ -19,7 +19,7 @@ pkg update && pkg install python cloudflared psmisc -y
 ​1. تشغيل النفق العكسي
 ​في النافذة الأولى لـ Termux، قم بتشغيل النفق:
 
-cloudflared tunnel --url tcp://localhost:8080
+cloudflared tunnel --url tcp://localhost:port
 
 
 2. تشغيل جسر الأشباح (Ghost Proxy)
@@ -31,7 +31,7 @@ python proxy.py
 3. إعداد سايفون (Psiphon Settings)
 ​اذهب إلى الإعدادات > إعدادات الوكيل.
 ​قم بتفعيل Connect through an HTTP Proxy.
-​العنوان: 127.0.0.1 | المنفذ: 8080.
+​العنوان: 127.0.0.1 | المنفذ: port.
 ​اضغط ابدأ وانتظر ظهور المفتاح! 🔑
 
 
