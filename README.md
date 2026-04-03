@@ -48,6 +48,11 @@ python proxy.py
 pkg update -y && pkg install git -y && git clone https://github.com/AndroidGhosts/Ghost-Bridge.git && cd Ghost-Bridge && chmod +x ghost.sh && ./ghost.sh
 
 
+
+
+
+
+
 <img width="1080" height="2400" alt="1000205201" src="https://github.com/user-attachments/assets/a7a27346-91e3-420a-8815-eb6ae94933b1" />
 
 
